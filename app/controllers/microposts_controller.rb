@@ -19,6 +19,12 @@ class MicropostsController < ApplicationController
     redirect_to root_url
   end
 
+  def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+  end
   private
 
     def micropost_params
